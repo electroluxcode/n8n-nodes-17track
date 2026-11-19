@@ -30,13 +30,15 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        # --ignore-scripts: skip isolated-vm native build (types-only build needs no native modules)
+        run: npm ci --legacy-peer-deps --ignore-scripts
 
       - name: Build node
         run: npm run build
 
       - name: Semantic release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # Built-in token has contents:write on this repo — enough for tag + release commit.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release

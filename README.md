@@ -1,9 +1,19 @@
 # n8n-nodes-17track
 
-> ⚠️ **Unofficial community package** — not verified by n8n. Version-pinned pre-release (`0.1.0-beta.1`) until Creator Portal review.
+> ⚠️ **Unofficial community package** — not verified by n8n until Creator Portal review.
 
 n8n community node for [17TRACK](https://www.17track.net/) — cross-border e-commerce order
 tracking for 3500+ carriers.
+
+## Screenshots
+
+Workflow execution (manual trigger → 17TRACK):
+
+![Workflow execution](docs/images/workflow-execution.png)
+
+Node output — structured `accepted` / `rejected` variables with full tracking details:
+
+![Node output](docs/images/output-variables.png)
 
 ## Operations
 
