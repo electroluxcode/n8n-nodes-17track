@@ -52,5 +52,8 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "packageManager": "pnpm@11.22.0"
+  "packageManager": "pnpm@11.22.0",
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
 }

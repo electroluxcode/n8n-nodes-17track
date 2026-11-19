@@ -83,6 +83,12 @@ export class SeventeenTrack implements INodeType {
 						action: 'Delete trackings',
 					},
 					{
+						name: 'Get Realtime Tracking Details',
+						value: 'get_realtime_tracking_details',
+						description: 'Query a single tracking number against carriers in real time',
+						action: 'Get realtime tracking details',
+					},
+					{
 						name: 'Get Tracking Details',
 						value: 'get_tracking_details',
 						description: 'Get current tracking details for up to 40 registered tracking numbers',
@@ -117,12 +123,6 @@ export class SeventeenTrack implements INodeType {
 						value: 'update_tracking_info',
 						description: 'Update the metadata of registered tracking numbers',
 						action: 'Update tracking info',
-					},
-					{
-						name: 'Get Realtime Tracking Details',
-						value: 'get_realtime_tracking_details',
-						description: 'Query a single tracking number against carriers in real time',
-						action: 'Get realtime tracking details',
 					},
 				],
 				default: 'get_tracking_details',
@@ -268,9 +268,6 @@ export class SeventeenTrack implements INodeType {
 	};
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
-		const credentials = await this.getCredentials('seventeenTrackApi');
-		const token = credentials.apiKey;
-		console.log('17TRACK DEBUG', JSON.stringify({ base: process.env.SEVENTEEN_TRACK_API_BASE ?? '(production default)', tokenPrefix: String(token).slice(0, 4) }));
 		const resource = this.getNodeParameter('resource', 0) as string;
 		const operation = this.getNodeParameter('operation', 0) as string;
 		const returnData: INodeExecutionData[] = [];
@@ -359,16 +356,19 @@ export class SeventeenTrack implements INodeType {
 			body = numbers.map((number) => ({ number }));
 		}
 
-		const response = await this.helpers.httpRequest({
-			method: 'POST',
-			url: `${API_BASE}/${path}`,
-			headers: {
-				'content-type': 'application/json',
-				accept: 'application/json',
-				'17token': token,
+		const response = await this.helpers.httpRequestWithAuthentication.call(
+			this,
+			'seventeenTrackApi',
+			{
+				method: 'POST',
+				url: `${API_BASE}/${path}`,
+				headers: {
+					'content-type': 'application/json',
+					accept: 'application/json',
+				},
+				body: JSON.stringify(body),
 			},
-			body: JSON.stringify(body),
-		});
+		);
 
 		const envelope = typeof response === 'string' ? JSON.parse(response) : response;
 		const data = (envelope && typeof envelope === 'object' ? envelope : {}) as Record<string, unknown>;
