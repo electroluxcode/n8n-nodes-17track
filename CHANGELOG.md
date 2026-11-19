@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.1...v1.1.2) (2026-11-19)
+
+
+### Bug Fixes
+
+* enable npm provenance attestation for release publishes ([dc61c07](https://github.com/electroluxcode/n8n-nodes-17track/commit/dc61c071aa99d251267febc4b684529f32abe4c4))
+
 ## [1.1.1](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.0...v1.1.1) (2026-11-19)
 
 
