@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.3...v1.1.4) (2026-11-19)
+
+
+### Bug Fixes
+
+* normalize indentation in credential source ([a31833b](https://github.com/electroluxcode/n8n-nodes-17track/commit/a31833b36b3720d223ba89fd86cb9438dd6c6371))
+
 ## [1.1.3](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.2...v1.1.3) (2026-11-19)
 
 
