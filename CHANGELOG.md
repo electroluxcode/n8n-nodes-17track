@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.2...v1.1.3) (2026-11-19)
+
+
+### Bug Fixes
+
+* use canonical ICredentialTestRequest shape for credential test ([77f39a1](https://github.com/electroluxcode/n8n-nodes-17track/commit/77f39a1b96a8087b3d1789878f23d09c06269b23))
+
 ## [1.1.2](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.1...v1.1.2) (2026-11-19)
 
 
