@@ -24,24 +24,24 @@ export class SeventeenTrackApi implements ICredentialType {
 	};
 
 	properties: INodeProperties[] = [
-    {
-      displayName: 'API Key',
-      name: 'apiKey',
-      type: 'string',
-      typeOptions: { password: true },
-      default: '',
-      required: true,
-      description:
-        '17TRACK API key sent in the 17token header. Get or change the key in 17TRACK API Settings: https://api.17track.net/admin/settings',
-    },
-  ];
+		{
+			displayName: 'API Key',
+			name: 'apiKey',
+			type: 'string',
+			typeOptions: { password: true },
+			default: '',
+			required: true,
+			description:
+				'17TRACK API key sent in the 17token header. Get or change the key in 17TRACK API Settings: https://api.17track.net/admin/settings',
+		},
+	];
 
-  authenticate: IAuthenticateGeneric = {
-    type: 'generic',
-    properties: {
-      headers: {
-        '17token': '={{$credentials.apiKey}}',
-      },
-    },
-  };
+	authenticate: IAuthenticateGeneric = {
+		type: 'generic',
+		properties: {
+			headers: {
+				'17token': '={{$credentials.apiKey}}',
+			},
+		},
+	};
 }
