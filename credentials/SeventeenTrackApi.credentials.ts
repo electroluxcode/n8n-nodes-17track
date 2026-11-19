@@ -1,7 +1,13 @@
-import { type IDataObject, type ICredentialType, type INodeProperties } from 'n8n-workflow';
+import {
+	type IAuthenticateGeneric,
+	type Icon,
+	type ICredentialTestRequest,
+	type ICredentialType,
+	type INodeProperties,
+} from 'n8n-workflow';
 
 export class SeventeenTrackApi implements ICredentialType {
-	icon = 'file:seventeenTrack.svg' as const;
+	icon: Icon = 'file:seventeenTrack.svg';
 
 	name = 'seventeenTrackApi';
 
@@ -9,12 +15,11 @@ export class SeventeenTrackApi implements ICredentialType {
 
 	documentationUrl = 'https://docs.17track.net';
 
-	test = {
+	test: ICredentialTestRequest = {
 		request: {
-			method: 'POST' as const,
-			url: 'https://api.17track.net/track/v2.4/getquota',
-			body: '[]' as unknown as IDataObject,
-			headers: { 'content-type': 'application/json' },
+			baseURL: 'https://api.17track.net',
+			url: '/track/v2.4/getquota',
+			method: 'POST',
 		},
 	};
 
@@ -31,8 +36,8 @@ export class SeventeenTrackApi implements ICredentialType {
     },
   ];
 
-  authenticate = {
-    type: 'generic' as const,
+  authenticate: IAuthenticateGeneric = {
+    type: 'generic',
     properties: {
       headers: {
         '17token': '={{$credentials.apiKey}}',
