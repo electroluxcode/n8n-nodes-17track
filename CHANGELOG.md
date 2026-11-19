@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.0...v1.1.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* republish package with lint-compliant build ([87a22ae](https://github.com/electroluxcode/n8n-nodes-17track/commit/87a22ae1c36759a090e542a9a8099bdece7a6dae))
+
 # 1.0.0 (2026-11-19)
 
 
