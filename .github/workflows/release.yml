@@ -23,22 +23,27 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: npm
+          # pnpm 11 requires Node >= 22.13
+          node-version: "22"
+          cache: pnpm
 
       - name: Install dependencies
-        # --ignore-scripts: skip isolated-vm native build (types-only build needs no native modules)
-        run: npm ci --legacy-peer-deps --ignore-scripts
+        run: pnpm install --frozen-lockfile
 
       - name: Build node
-        run: npm run build
+        run: pnpm run build
+
+      - name: Configure git credentials for release push
+        run: git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
 
       - name: Semantic release
         env:
-          # Built-in token has contents:write on this repo — enough for tag + release commit.
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: pnpm exec semantic-release
