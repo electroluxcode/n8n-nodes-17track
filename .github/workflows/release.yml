@@ -47,4 +47,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # npm provenance attestation (Creator Portal requirement)
+          NPM_CONFIG_PROVENANCE: true
         run: pnpm exec semantic-release
