@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.4...v1.1.5) (2026-11-20)
+
+
+### Bug Fixes
+
+* stop shipping .d.ts files in the npm package ([84f3296](https://github.com/electroluxcode/n8n-nodes-17track/commit/84f3296023b154e65b197cdf69f6d5818c5fd732))
+
 ## [1.1.4](https://github.com/electroluxcode/n8n-nodes-17track/compare/v1.1.3...v1.1.4) (2026-11-19)
 
 
