@@ -44,7 +44,7 @@
     "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.0",
     "@types/node": "^22.10.0",
-    "n8n-workflow": "1.90.0",
+    "n8n-workflow": "3.3.0",
     "semantic-release": "^24.2.0",
     "typescript": "5.9.3"
   },
